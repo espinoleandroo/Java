@@ -4,6 +4,7 @@ public class TareaEsteban {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);
 		
 		System.out.print("Cuanto vale n: ");
