@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title th:text="${title}"></title>
+</head>
+<body>
+<h1></h1>
+<ul>
+<li>
+<a th:href="@{/params/string(text='Hello world')}">/params/string?text=Hello word</a>
+</li>
+<li>
+<a th:href="@{/params/string(text='Hola mundo')}">/params/string?text=Hola mundo</a>
+</li>
+</ul>
+</body>
+</html>
