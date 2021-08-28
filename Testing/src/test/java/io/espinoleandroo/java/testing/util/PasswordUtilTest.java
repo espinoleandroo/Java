@@ -1,4 +1,4 @@
-package io.espinoleandroo.javatest.util;
+package io.espinoleandroo.java.testing.util;
 
 import org.junit.Test;
 

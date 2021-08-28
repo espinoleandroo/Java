@@ -1,4 +1,4 @@
-package io.espinoleandroo.javatest.util;
+package io.espinoleandroo.java.testing.util;
 
 public class StringUtil {
     public static String repeat(String string, int times){
