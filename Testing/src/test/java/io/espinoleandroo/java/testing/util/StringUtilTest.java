@@ -1,9 +1,32 @@
 package io.espinoleandroo.java.testing.util;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 import org.junit.Assert;
 import org.junit.Test;
 
 public class StringUtilTest {
+	
+	@Test
+	public void a_string_is_not_empty() {
+		assertFalse(StringUtil.isEmpty("Hello Platzi from Java with JUnit =D"));
+	}
+	
+	@Test
+	public void this_is_an_empty_string() {
+		assertTrue(StringUtil.isEmpty(""));
+	}
+	
+	@Test
+	public void null_is_empty() {
+		assertTrue(StringUtil.isEmpty(null));
+	}
+	
+	@Test
+	public void a_string_with_spaces_is_empty() {
+		assertTrue(StringUtil.isEmpty("        "));
+	}
 
     public static void main(String[] args) {
         String result;
@@ -46,4 +69,5 @@ public class StringUtilTest {
     public void repeat_string_negative_times() {
     	Assert.assertEquals("HoolaHoolaHoola", StringUtil.repeat("Hoola", -1));
     }
+    
 }
