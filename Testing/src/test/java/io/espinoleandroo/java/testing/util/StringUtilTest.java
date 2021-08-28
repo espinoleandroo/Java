@@ -24,4 +24,26 @@ public class StringUtilTest {
             throw new RuntimeException(actual + " is not equeal to expected " + expected);
         }
     }
+    
+    @Test
+    public void repeat_string_once() {
+    	Assert.assertEquals("Hoola", StringUtil.repeat("Hoola", 1));
+    }
+    
+    
+    @Test
+    public void repeat_string_multiple_times() {
+    	Assert.assertEquals("HoolaHoolaHoola", StringUtil.repeat("Hoola", 3));
+    }
+    
+    @Test
+    public void repeat_string_zero_times() {
+    	Assert.assertEquals("", StringUtil.repeat("hola", 0));
+    }
+    
+    
+    @Test(expected = IllegalArgumentException.class)
+    public void repeat_string_negative_times() {
+    	Assert.assertEquals("HoolaHoolaHoola", StringUtil.repeat("Hoola", -1));
+    }
 }
