@@ -19,7 +19,7 @@ import io.espinoleandroo.java.testing.movies.model.Movie;
 public class MovieServiceShould {
 	MovieRepository movieRepository;
 	MovieService movieService;
-	
+
 	@Before
 	public void setUp() throws Exception {
 		movieRepository = Mockito.mock(MovieRepository.class);
@@ -28,30 +28,24 @@ public class MovieServiceShould {
 				.thenReturn(Arrays.asList(new Movie(1, "Dark Knight", 152, Genre.ACTION),
 						new Movie(2, "Memento", 113, Genre.THRILLER),
 						new Movie(3, "There's Something About Mary", 119, Genre.COMEDY),
-						new Movie(4, "Super 8", 112, Genre.THRILLER), new Movie(5, "Scream", 111, Genre.HORROR),
+						new Movie(4, "Super 8", 112, Genre.THRILLER), 
+						new Movie(5, "Scream", 111, Genre.HORROR),
 						new Movie(6, "Home Alone", 103, Genre.COMEDY)));
-		
+
 		movieService = new MovieService(movieRepository);
 
 	}
 
 	@Test
 	public void return_movies_by_genre() {
-
-		
 		Collection<Movie> movies = movieService.findMoviesByGenre(Genre.COMEDY);
-
-		List<Integer> moviesIds = getMoviesIds(movies);
-
-		assertThat(moviesIds, CoreMatchers.is(Arrays.asList(3, 6)));
+		assertThat(getMoviesIds(movies), CoreMatchers.is(Arrays.asList(3, 6)));
 	}
 
 	@Test
 	public void return_movies_by_duration() {
 		Collection<Movie> movies = movieService.findMoviesByLength(119);
-		List<Integer> moviesIds = getMoviesIds(movies);
-
-		assertThat(moviesIds, CoreMatchers.is(Arrays.asList(2, 3, 4, 5, 6)));
+		assertThat(getMoviesIds(movies), CoreMatchers.is(Arrays.asList(2, 3, 4, 5, 6)));
 	}
 
 	private List<Integer> getMoviesIds(Collection<Movie> movies) {
