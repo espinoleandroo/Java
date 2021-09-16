@@ -1,10 +1,8 @@
-package io.espinoleandroo.java.functional.lambda;
+package io.espinoleandroo.java.functional;
 
 import java.util.List;
 import java.util.function.BiFunction;
 import java.util.function.Predicate;
-
-import io.espinoleandroo.java.functional.NombresUtils;
 
 public class Sintaxis {
 
