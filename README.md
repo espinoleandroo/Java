@@ -8,7 +8,7 @@
   <h3 align="center">El mejor repositorio de Java</h3>
 
   <p align="center">
-    ¡Un asombrozo repositorio para comenzar a aprender!
+    ¡Un asombroso repositorio para comenzar a aprender!
   </p>
 </p>
 
@@ -20,7 +20,7 @@
     <li><a href="#poo">Programación Oriendata a Objectos</a></li>
     <li><a href="#persitencia">Persistencia de Datos</a></li>
     <li><a href="#testing">Testing</a></li>
-    <li><a href="#funcional">Programación Funcional</a></li>
+    <li><a href="#https://github.com/espinoleandroo/Java/tree/master/Functional">Programación Funcional</a></li>
     <li><a href="#fundamentos_spring">Fundamentos Spring Boot</a></li>
     <li><a href="#spring">Spring</a></li>
     <li><a href="#avanzado">Java SE Avanzado</a></li>
