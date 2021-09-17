@@ -11,14 +11,46 @@
 <details open="open">
   <summary>Contenido</summary>
   <ol>
-    <li><a href="#uno">¿Qué es la Programación Funcional</a></li>
-    <li><a href="#dos">¿Qué es una función en Java</a></li>
-    <li><a href="#tres">Funciones como ciudadanos de primera clase</a></li>
-    <li><a href="#cuatro">Funciones puras</a></li>
-    <li><a href="#cinco">Entendiendo los efectos secundarios</a></li>
-    <li><a href="#seis">Funciones de orden mayor</a></li>
-    <li><a href="#siete">Funciones lamda</a></li>
-    <li><a href="#ocho">Inmutabilidad</a></li>
+    <li>Entendiendo las partes de la programación funcional
+      <ul>
+        <li><a href="#">¿Qué es la Programación Funcional?</a></li>
+        <li><a href="#">¿Qué es una función en Java?</a></li>
+        <li><a href="#">Funciones como ciudadanos de primera clase</a></li>
+        <li><a href="#">Funciones puras</a></li>
+        <li><a href="#">Entendiendo los efectos secundarios</a></li>
+        <li><a href="#">Funciones de orden mayor</a></li>
+        <li><a href="#">Funciones lambda</a></li>
+        <li><a href="#">Inmutabilidad</a></li>
+      </ul>
+    </li>
+    <li>Functional Programming en Java
+      <ul>
+        <li><a href="#">Predicate</a></li>
+        <li><a href="#">Consumer</a></li>
+        <li><a href="#">Supplier</a></li>
+        <li><a href="#">Operator</a></li>
+        <li><a href="#">BiFunction</a></li>
+        <li><a href="#">SAM y FunctionalInterface</a></li>
+        <li><a href="#">Operador de referencia</a></li>
+        <li><a href="#">Inferencia de tipos</a></li>
+        <li><a href="#">Lambda</a></li>
+        <li><a href="#">Chaining</a></li>
+        <li><a href="#">Composición de funciones</a></li>
+      </ul>
+    </li>
+     <li>Optional y Streams: Datos mas interesantes
+      <ul>
+        <li><a href="#">Optional</a></li>
+        <li><a href="#">Stream</a></li>
+        <li><a href="#">Stream Listeners</a></li>
+        <li><a href="#">Operaciones y Collectors</a></li>
+        <li><a href="#">Stremas de tipo especifico</a></li>
+        <li><a href="#">Paralelismo</a></li>
+        <li><a href="#">Operaciones Terminales</a></li>
+        <li><a href="#">Operaciones Intermedias</a></li>
+        <li><a href="#">Collectos</a></li>
+      </ul>
+    </li>
   </ol>
 </details>
 
