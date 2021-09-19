@@ -9,6 +9,7 @@ import io.espinoleandroo.java.springboot.bean.MyBean;
 import io.espinoleandroo.java.springboot.bean.MyBeanWithDependency;
 import io.espinoleandroo.java.springboot.bean.MyBeanWithProperties;
 import io.espinoleandroo.java.springboot.component.ComponentDependency;
+import io.espinoleandroo.java.springboot.dao.User;
 
 @SpringBootApplication
 public class Application implements CommandLineRunner{
@@ -17,12 +18,15 @@ public class Application implements CommandLineRunner{
 	private MyBean myBean;
 	private MyBeanWithDependency beanWithDependency;
 	private MyBeanWithProperties beanWithProperties;
+	private User user;
 	
-	public Application(@Qualifier("componentTwoImplement") ComponentDependency componentDependency, MyBean myBean, MyBeanWithDependency beanWithDependency, MyBeanWithProperties beanWithProperties) {
+	
+	public Application(@Qualifier("componentTwoImplement") ComponentDependency componentDependency, MyBean myBean, MyBeanWithDependency beanWithDependency, MyBeanWithProperties beanWithProperties, User user) {
 		this.componentDependency = componentDependency;
 		this.myBean = myBean;
 		this.beanWithDependency = beanWithDependency;
 		this.beanWithProperties = beanWithProperties;
+		this.user = user;
 	}
 	
 	
@@ -38,6 +42,7 @@ public class Application implements CommandLineRunner{
 		myBean.print();
 		beanWithDependency.printWithDependency();
 		System.out.println(beanWithProperties.function());
+		System.out.println(user.getEmail() + " " + user.getPassword());
 	}
 
 }

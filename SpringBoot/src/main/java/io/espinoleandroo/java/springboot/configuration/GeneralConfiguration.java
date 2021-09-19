@@ -1,13 +1,16 @@
 package io.espinoleandroo.java.springboot.configuration;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import io.espinoleandroo.java.springboot.bean.MyBeanWithProperties;
 import io.espinoleandroo.java.springboot.bean.MyBeanWithPropertiesImplement;
+import io.espinoleandroo.java.springboot.dao.User;
 
 @Configuration
+@EnableConfigurationProperties(User.class)
 public class GeneralConfiguration {
 	@Value("${value.nombre}")
 	private String nombre;
