@@ -1,5 +1,7 @@
 package io.espinoleandroo.java.springboot;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -14,6 +16,8 @@ import io.espinoleandroo.java.springboot.dao.User;
 @SpringBootApplication
 public class Application implements CommandLineRunner{
 
+	Log LOGGER = LogFactory.getLog(Application.class);
+	
 	private ComponentDependency componentDependency;
 	private MyBean myBean;
 	private MyBeanWithDependency beanWithDependency;
@@ -43,6 +47,12 @@ public class Application implements CommandLineRunner{
 		beanWithDependency.printWithDependency();
 		System.out.println(beanWithProperties.function());
 		System.out.println(user.getEmail() + " " + user.getPassword());
+		try {
+			int value = 10/0;
+		} catch (Exception e) {
+			LOGGER.error("ERROR: " + e.getMessage());
+		}
+		
 	}
 
 }
