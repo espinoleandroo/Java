@@ -1,5 +1,9 @@
 package io.espinoleandroo.java.springboot;
 
+import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.List;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -12,6 +16,7 @@ import io.espinoleandroo.java.springboot.bean.MyBeanWithDependency;
 import io.espinoleandroo.java.springboot.bean.MyBeanWithProperties;
 import io.espinoleandroo.java.springboot.component.ComponentDependency;
 import io.espinoleandroo.java.springboot.dao.User;
+import io.espinoleandroo.java.springboot.repository.UserRepository;
 
 @SpringBootApplication
 public class Application implements CommandLineRunner{
@@ -24,13 +29,15 @@ public class Application implements CommandLineRunner{
 	private MyBeanWithProperties beanWithProperties;
 	private User user;
 	
+	private UserRepository userRepository;
 	
-	public Application(@Qualifier("componentTwoImplement") ComponentDependency componentDependency, MyBean myBean, MyBeanWithDependency beanWithDependency, MyBeanWithProperties beanWithProperties, User user) {
+	public Application(@Qualifier("componentTwoImplement") ComponentDependency componentDependency, MyBean myBean, MyBeanWithDependency beanWithDependency, MyBeanWithProperties beanWithProperties, User user, UserRepository userRepository) {
 		this.componentDependency = componentDependency;
 		this.myBean = myBean;
 		this.beanWithDependency = beanWithDependency;
 		this.beanWithProperties = beanWithProperties;
 		this.user = user;
+		this.userRepository = userRepository;  
 	}
 	
 	
@@ -42,6 +49,32 @@ public class Application implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 
+		//ejemplosAnteriores();
+		saveUsersInDataBase();
+	}
+	
+	private void saveUsersInDataBase() {
+		io.espinoleandroo.java.springboot.entity.User user1 = new io.espinoleandroo.java.springboot.entity.User("Leandro", "espinoleandroo@gmail.com", LocalDate.of(2021, 11, 11));
+		io.espinoleandroo.java.springboot.entity.User user2 = new io.espinoleandroo.java.springboot.entity.User("user2", "user2@outlook.com", LocalDate.of(2021, 11, 11));
+		io.espinoleandroo.java.springboot.entity.User user3 = new io.espinoleandroo.java.springboot.entity.User("user3", "user3@outlook.com", LocalDate.of(2021, 06, 23));
+		io.espinoleandroo.java.springboot.entity.User user4 = new io.espinoleandroo.java.springboot.entity.User("user4", "user4@outlook.com", LocalDate.of(2021, 03, 01));
+		io.espinoleandroo.java.springboot.entity.User user5 = new io.espinoleandroo.java.springboot.entity.User("user5", "user5@outlook.com", LocalDate.of(2021, 11, 25));
+		io.espinoleandroo.java.springboot.entity.User user6 = new io.espinoleandroo.java.springboot.entity.User("user6", "user6@outlook.com", LocalDate.of(2021, 12, 20));
+		io.espinoleandroo.java.springboot.entity.User user7 = new io.espinoleandroo.java.springboot.entity.User("user7", "user7@outlook.com", LocalDate.of(2021, 9, 07));
+		io.espinoleandroo.java.springboot.entity.User user8 = new io.espinoleandroo.java.springboot.entity.User("user8", "user8@outlook.com", LocalDate.of(2021, 9, 7));
+		io.espinoleandroo.java.springboot.entity.User user9 = new io.espinoleandroo.java.springboot.entity.User("user9", "user9@outlook.com", LocalDate.of(2021, 11, 25));
+		io.espinoleandroo.java.springboot.entity.User user0 = new io.espinoleandroo.java.springboot.entity.User("user0", "user0@outlook.com", LocalDate.of(2021, 9, 7));
+		
+		List<io.espinoleandroo.java.springboot.entity.User> list = Arrays.asList(user1, user2, user3, user4, user5, user6, user7, user8, user9, user0);
+		
+		list.stream().forEach(userRepository::save);
+		
+		
+		
+	}
+	
+	
+	private void ejemplosAnteriores() {
 		componentDependency.saludar();
 		myBean.print();
 		beanWithDependency.printWithDependency();
@@ -52,7 +85,6 @@ public class Application implements CommandLineRunner{
 		} catch (Exception e) {
 			LOGGER.error("ERROR: " + e.getMessage());
 		}
-		
 	}
 
 }
