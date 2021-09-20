@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.domain.Sort;
 
 import io.espinoleandroo.java.springboot.bean.MyBean;
 import io.espinoleandroo.java.springboot.bean.MyBeanWithDependency;
@@ -51,6 +52,17 @@ public class Application implements CommandLineRunner{
 
 		//ejemplosAnteriores();
 		saveUsersInDataBase();
+		getInformationJpglFromUser();
+	}
+	
+	private void getInformationJpglFromUser() {
+		LOGGER.info("Usuario con el metodo findByUserEmail" + 
+				userRepository.findByUserEmail("espinoleandroo@gmail.com")
+				.orElseThrow(() -> new RuntimeException("No se encontro el usuario")));
+		
+		userRepository.findAndSort("user", Sort.by("id").descending())
+			.stream()
+			.forEach(user -> LOGGER.info("Usuarion con metodo findAndSort" + user));
 	}
 	
 	private void saveUsersInDataBase() {
