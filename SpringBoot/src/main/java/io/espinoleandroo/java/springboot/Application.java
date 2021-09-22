@@ -63,6 +63,13 @@ public class Application implements CommandLineRunner{
 		userRepository.findAndSort("user", Sort.by("id").descending())
 			.stream()
 			.forEach(user -> LOGGER.info("Usuarion con metodo findAndSort" + user));
+		
+		userRepository.findByName("Leandro")
+			.stream()
+			.forEach(user -> LOGGER.info("Usuario con query method " + user));
+		
+		LOGGER.info("Usuario con query method findEmailAndName " + userRepository.findByEmailAndName("espinoleandroo@gmail.com", "Leandro")
+			.orElseThrow(() -> new RuntimeException("Usuario no encontrado")));
 	}
 	
 	private void saveUsersInDataBase() {
