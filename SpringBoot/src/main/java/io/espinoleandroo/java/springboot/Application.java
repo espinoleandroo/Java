@@ -62,12 +62,19 @@ public class Application implements CommandLineRunner{
 	private void saveWithErrorTransactional() {
 		io.espinoleandroo.java.springboot.entity.User test1 = new io.espinoleandroo.java.springboot.entity.User("TestTransactional1", "TestTransactional1@domain.com", LocalDate.now());
 		io.espinoleandroo.java.springboot.entity.User test2 = new io.espinoleandroo.java.springboot.entity.User("TestTransactional2", "TestTransactional2@domain.com", LocalDate.now());
-		io.espinoleandroo.java.springboot.entity.User test3 = new io.espinoleandroo.java.springboot.entity.User("TestTransactional3", "TestTransactional3@domain.com", LocalDate.now());
+		io.espinoleandroo.java.springboot.entity.User test3 = new io.espinoleandroo.java.springboot.entity.User("TestTransactional3", "TestTransactional1@domain.com", LocalDate.now());
 		io.espinoleandroo.java.springboot.entity.User test4 = new io.espinoleandroo.java.springboot.entity.User("TestTransactional4", "TestTransactional4@domain.com", LocalDate.now());
 		
 		List<io.espinoleandroo.java.springboot.entity.User> users = Arrays.asList(test1, test2, test3, test4);
 		
-		userService.saveTransactional(users);
+		try {
+			userService.saveTransactional(users);
+		} catch (Exception e) {
+			LOGGER.error("eXcepcion dentro de transaccion");
+		}
+		
+		
+		
 		userService.getAllUsers()
 			.stream()
 			.forEach(user -> LOGGER.info("Usuario insertado atraves del metodo Transactional" + user));;
