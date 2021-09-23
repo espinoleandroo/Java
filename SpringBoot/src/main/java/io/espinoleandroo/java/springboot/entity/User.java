@@ -24,20 +24,20 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id_user", nullable = false, unique = true)
 	private Long id;
-	
+
 	@Column(length = 50)
 	private String name;
-	
+
 	@Column(length = 50, unique = true)
 	private String email;
-	
+
 	@Column(length = 50)
 	private LocalDate birthDate;
-	
+
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JsonManagedReference
 	private List<Post> posts = new ArrayList<Post>();
-	
+
 	public User() {
 		// TODO Auto-generated constructor stub
 	}
@@ -47,6 +47,10 @@ public class User {
 		this.name = name;
 		this.email = email;
 		this.birthDate = birthDate;
+	}
+
+	public User(Long id) {
+		this.id = id;
 	}
 
 	public Long getId() {
@@ -94,6 +98,5 @@ public class User {
 		return "User [id=" + id + ", name=" + name + ", email=" + email + ", birthDate=" + birthDate + ", posts="
 				+ posts + "]";
 	}
-	
-	
+
 }

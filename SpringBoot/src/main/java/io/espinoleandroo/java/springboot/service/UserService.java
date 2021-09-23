@@ -15,20 +15,35 @@ import io.espinoleandroo.java.springboot.repository.UserRepository;
 public class UserService {
 	private final Log LOG = LogFactory.getLog(UserService.class);
 	private UserRepository userRepository;
-	
+
 	public UserService(UserRepository repository) {
 		this.userRepository = repository;
 	}
-	
+
 	@Transactional
 	public void saveTransactional(List<User> users) {
-		users.stream()
-			.peek(user -> LOG.info("INSERT" + user))
-			.forEach(userRepository::save);
+		users.stream().peek(user -> LOG.info("INSERT" + user)).forEach(userRepository::save);
 	}
-	
-	
-	public List<User> getAllUsers(){
+
+	public List<User> getAllUsers() {
 		return userRepository.findAll();
+	}
+
+	public User save(User newUser) {
+		return userRepository.save(newUser);
+	}
+
+	public void delete(Long id) {
+		userRepository.delete(new User(id));
+	}
+
+	public User updateUser(User newUser, Long id) {
+		return userRepository.findById(id).map(user -> {
+			user.setEmail(newUser.getEmail());
+			user.setBirthDate(newUser.getBirthDate());
+			user.setName(newUser.getName());
+			return userRepository.save(user);
+		}).get();
+
 	}
 }
