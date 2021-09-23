@@ -18,6 +18,7 @@ import io.espinoleandroo.java.springboot.bean.MyBeanWithProperties;
 import io.espinoleandroo.java.springboot.component.ComponentDependency;
 import io.espinoleandroo.java.springboot.dao.User;
 import io.espinoleandroo.java.springboot.repository.UserRepository;
+import io.espinoleandroo.java.springboot.service.UserService;
 
 @SpringBootApplication
 public class Application implements CommandLineRunner{
@@ -31,14 +32,16 @@ public class Application implements CommandLineRunner{
 	private User user;
 	
 	private UserRepository userRepository;
+	private UserService userService;
 	
-	public Application(@Qualifier("componentTwoImplement") ComponentDependency componentDependency, MyBean myBean, MyBeanWithDependency beanWithDependency, MyBeanWithProperties beanWithProperties, User user, UserRepository userRepository) {
+	public Application(@Qualifier("componentTwoImplement") ComponentDependency componentDependency, MyBean myBean, MyBeanWithDependency beanWithDependency, MyBeanWithProperties beanWithProperties, User user, UserRepository userRepository, UserService userService) {
 		this.componentDependency = componentDependency;
 		this.myBean = myBean;
 		this.beanWithDependency = beanWithDependency;
 		this.beanWithProperties = beanWithProperties;
 		this.user = user;
 		this.userRepository = userRepository;  
+		this.userService = userService;
 	}
 	
 	
@@ -53,8 +56,24 @@ public class Application implements CommandLineRunner{
 		//ejemplosAnteriores();
 		saveUsersInDataBase();
 		getInformationJpglFromUser();
+		saveWithErrorTransactional();
 	}
 	
+	private void saveWithErrorTransactional() {
+		io.espinoleandroo.java.springboot.entity.User test1 = new io.espinoleandroo.java.springboot.entity.User("TestTransactional1", "TestTransactional1@domain.com", LocalDate.now());
+		io.espinoleandroo.java.springboot.entity.User test2 = new io.espinoleandroo.java.springboot.entity.User("TestTransactional2", "TestTransactional2@domain.com", LocalDate.now());
+		io.espinoleandroo.java.springboot.entity.User test3 = new io.espinoleandroo.java.springboot.entity.User("TestTransactional3", "TestTransactional3@domain.com", LocalDate.now());
+		io.espinoleandroo.java.springboot.entity.User test4 = new io.espinoleandroo.java.springboot.entity.User("TestTransactional4", "TestTransactional4@domain.com", LocalDate.now());
+		
+		List<io.espinoleandroo.java.springboot.entity.User> users = Arrays.asList(test1, test2, test3, test4);
+		
+		userService.saveTransactional(users);
+		userService.getAllUsers()
+			.stream()
+			.forEach(user -> LOGGER.info("Usuario insertado atraves del metodo Transactional" + user));;
+	}
+
+
 	private void getInformationJpglFromUser() {
 		LOGGER.info("Usuario con el metodo findByUserEmail" + 
 				userRepository.findByUserEmail("espinoleandroo@gmail.com")
