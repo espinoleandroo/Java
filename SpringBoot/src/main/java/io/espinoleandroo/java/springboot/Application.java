@@ -70,6 +70,29 @@ public class Application implements CommandLineRunner{
 		
 		LOGGER.info("Usuario con query method findEmailAndName " + userRepository.findByEmailAndName("espinoleandroo@gmail.com", "Leandro")
 			.orElseThrow(() -> new RuntimeException("Usuario no encontrado")));
+		
+		userRepository.findByNameLike("%user%")
+			.stream()
+			.forEach(user -> LOGGER.info("Usuario findByNameLike" + user));
+	
+		userRepository.findByNameOrEmail("user9", "user0@outlook.com")
+			.stream()
+			.forEach(user -> LOGGER.info("Usuario findByNameOrEmail" + user));
+		
+		userRepository.findByNameAndEmail("Leandro", "espinoleandroo@gmail.com")
+			.stream()
+			.forEach(user -> LOGGER.info("Usuario findByNameAndEmail" + user));
+
+		userRepository.findByBirthDateBetween(LocalDate.of(2021, 10, 31), LocalDate.of(2021, 11, 30))
+			.stream()
+			.forEach(user -> LOGGER.info("Usuario findByBirthDateBetween" + user));
+
+		userRepository.findByNameContainingOrderByIdDesc("user")
+			.stream()
+			.forEach(user -> LOGGER.info("Usuario findByNameContainingOrderByIdDesc" + user));
+
+		
+	
 	}
 	
 	private void saveUsersInDataBase() {
