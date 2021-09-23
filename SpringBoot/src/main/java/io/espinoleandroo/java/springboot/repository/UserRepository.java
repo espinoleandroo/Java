@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
@@ -14,7 +15,7 @@ import io.espinoleandroo.java.springboot.dto.UserDto;
 import io.espinoleandroo.java.springboot.entity.User;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Long>{
+public interface UserRepository extends PagingAndSortingRepository<User, Long>{
 
 	
 	@Query("SELECT u FROM User u WHERE u.email = ?1")
@@ -41,4 +42,7 @@ public interface UserRepository extends JpaRepository<User, Long>{
 			+ " WHERE u.birthDate = :paramDate "
 			+ " AND u.email = :paramEmail ")
 	Optional<UserDto> getAllByBirthDateAndEmail(@Param("paramDate") LocalDate date, @Param("paramEmail") String email);
+	
+	@Override
+	List<User> findAll(Sort sort);
 }
