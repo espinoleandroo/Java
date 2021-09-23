@@ -91,7 +91,10 @@ public class Application implements CommandLineRunner{
 			.stream()
 			.forEach(user -> LOGGER.info("Usuario findByNameContainingOrderByIdDesc" + user));
 
-		
+		LOGGER.info("Usuario getAllByBirthDateAndEmail" + 
+				userRepository.getAllByBirthDateAndEmail(LocalDate.of(2021, 11, 11), "espinoleandroo@gmail.com")
+		.orElseThrow(() -> new RuntimeException("Usuario no encontrado")));		
+
 	
 	}
 	
