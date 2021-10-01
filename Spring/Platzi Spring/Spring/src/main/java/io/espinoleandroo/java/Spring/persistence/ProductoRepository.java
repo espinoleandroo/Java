@@ -3,6 +3,7 @@ package io.espinoleandroo.java.Spring.persistence;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import io.espinoleandroo.java.Spring.domain.Product;
@@ -14,7 +15,9 @@ import io.espinoleandroo.java.Spring.persistence.mapper.ProductMapper;
 @Repository
 public class ProductoRepository implements ProductRepository{
 
+	@Autowired
 	private ProductoCrudRepository productoCrudRepository;
+	@Autowired
 	private ProductMapper mapper;
 	
 	@Override
