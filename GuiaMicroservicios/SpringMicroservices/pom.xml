@@ -17,6 +17,10 @@
   <name>SpringMicroservices</name>
   <packaging>pom</packaging>
 
+  <modules>
+    <module>gateway</module>
+  </modules>
+
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>17</maven.compiler.source>
