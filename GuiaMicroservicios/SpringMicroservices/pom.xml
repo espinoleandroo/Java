@@ -22,6 +22,7 @@
     <module>eureka</module>
     <module>config</module>
     <module>student</module>
+    <module>course</module>
   </modules>
 
   <properties>
