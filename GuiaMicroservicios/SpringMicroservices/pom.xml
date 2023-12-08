@@ -21,6 +21,7 @@
     <module>gateway</module>
     <module>eureka</module>
     <module>config</module>
+    <module>student</module>
   </modules>
 
   <properties>
