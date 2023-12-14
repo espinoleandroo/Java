@@ -6,14 +6,14 @@ spring:
     name: msvc-student
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/studentsDb
+    url: jdbc:mysql://localhost:3306/studentDb
     username: root
     password: 150919
   jpa:
     hibernate:
       ddl-auto: create
     database: mysql
-    database:-platform: org.hibernate.dialect.MySQL8Dialect
+    database-platform: org.hibernate.dialect.MySQL8Dialect
 
 eureka:
   instance:

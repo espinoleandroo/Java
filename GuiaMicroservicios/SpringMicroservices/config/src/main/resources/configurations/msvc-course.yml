@@ -4,18 +4,16 @@ server:
 spring:
   application:
     name: msvc-course
-  config:
-    import: optional:configserver:http://localhost:8888
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/coursesDb
-    username: postgre
+    username: postgres
     password: 150919
   jpa:
     hibernate:
       ddl-auto: create
     database: postgresql
-    database:-platform: org.hibernate.dialect.PostgreSQLDialect
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
 
 eureka:
   instance:
