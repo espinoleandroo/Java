@@ -1,25 +1,5 @@
-server:
-  port: 8090
-
 spring:
   application:
     name: msvc-student
   config:
     import: optional:configserver:http://localhost:8888
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/studentsDb
-    username: root
-    password: 150919
-  jpa:
-    hibernate:
-      ddl-auto: create
-    database: mysql
-    database:-platform: org.hibernate.dialect.MySQL8Dialect
-
-eureka:
-  instance:
-    hostname: localhost
-  client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka
